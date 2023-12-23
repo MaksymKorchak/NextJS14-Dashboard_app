@@ -225,3 +225,13 @@ export async function getUser(email: string) {
     throw new Error('Failed to fetch user.');
   }
 }
+
+export async function checkIfEmailIsValid(email: string): Promise<boolean> {
+  try {
+    const user = await sql`SELECT * FROM users WHERE email=${email}`;
+    return !user.rows.length
+  } catch (error) {
+    console.error('Failed to fetch user:', error);
+    return false;
+  }
+}
