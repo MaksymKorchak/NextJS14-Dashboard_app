@@ -6,26 +6,6 @@ import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 
-export async function authenticate(
-    prevState: string | undefined,
-    formData: FormData,
-  ) {
-    try {
-      await signIn('credentials', formData);
-    } catch (error) {
-      if (error instanceof AuthError) {
-        switch (error.type) {
-          case 'CredentialsSignin':
-            return 'Invalid credentials.';
-          default:
-            return 'Something went wrong.';
-        }
-      }
-      throw error;
-    }
-};
-
-
 const FormSchema = z.object({
     id: z.string(),
     customerId: z.string({
@@ -52,7 +32,7 @@ const FormSchema = z.object({
 // createInvoice
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 export async function createInvoice(prevState: State, formData: FormData) {
-
+console.log(1)
     // Validate form fields using Zod
     const validatedFields = CreateInvoice.safeParse(Object.fromEntries(formData.entries()));
     // If form validation fails, return errors early. Otherwise, continue.
@@ -93,7 +73,7 @@ export async function updateInvoice(id: string, prevState: State, formData: Form
 
      // Validate form fields using Zod
     const validatedFields = CreateInvoice.safeParse(Object.fromEntries(formData.entries()));
-console.log(validatedFields)
+
     // If form validation fails, return errors early. Otherwise, continue.
     if (!validatedFields.success) {
          // If a database error occurs, return a more specific error.
@@ -136,4 +116,24 @@ export async function deleteInvoice(id: string) {
             message: 'Database Error: Failed to Delete Invoice.',
           };
     };
+};
+
+//authenticate
+export async function authenticate(
+    prevState: string | undefined,
+    formData: FormData,
+  ) {
+    try {
+      await signIn('credentials', formData);
+    } catch (error) {
+      if (error instanceof AuthError) {
+        switch (error.type) {
+          case 'CredentialsSignin':
+            return 'Invalid credentials.';
+          default:
+            return 'Something went wrong.';
+        }
+      }
+      throw error;
+    }
 };
