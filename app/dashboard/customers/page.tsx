@@ -24,7 +24,7 @@ export default function Customers ({ searchParams } : {
                 <Suspense fallback={<CustomersTableSkeleton/>}>
                     <Table query={query}/>
                 </Suspense>
-          </div>
+            </div>
         </main>
     )
 };

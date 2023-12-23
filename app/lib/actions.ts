@@ -9,7 +9,6 @@ import { AuthError } from 'next-auth';
 import { checkIfEmailIsValid } from './data';
 import bcrypt from 'bcrypt';
 
-
 const FormSchema = z.object({
     id: z.string(),
     customerId: z.string({
@@ -59,7 +58,7 @@ export async function createUser(prevState: State, formData: FormData) {
     if (!validatedFields.success) {
         return {
             errors: validatedFields.error.flatten().fieldErrors,
-            message: 'Missing Fields. Failed to Create User.',
+            message: 'Missing Fields. Failed to Register User.',
         };
     };
     // Prepare data for insertion into the database

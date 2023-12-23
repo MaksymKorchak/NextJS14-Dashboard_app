@@ -4,6 +4,7 @@ import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
+  Cog6ToothIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'
@@ -25,6 +26,11 @@ const links = [
     name: 'Customers', 
     href: '/dashboard/customers', 
     icon: UserGroupIcon 
+  },
+  { 
+    name: 'User Settings', 
+    href: '/dashboard/settings', 
+    icon: Cog6ToothIcon 
   },
 ];
 

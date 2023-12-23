@@ -24,10 +24,7 @@ export default function LoginForm() {
         </h1>
         <div className="w-full">
           <div>
-            <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="email"
-            >
+            <label htmlFor="name" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
               Name
             </label>
             <div className="relative">
@@ -36,17 +33,21 @@ export default function LoginForm() {
                 id="name"
                 type="text"
                 name="name"
-                placeholder="Enter your name"
-                required
-              />
+                aria-labelledby="name-error"
+                placeholder="Enter your name"/>
               <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+            </div>
+            <div id="name-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.name &&
+                state.errors.name.map((error: string) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
             </div>
           </div>
           <div>
-            <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="email"
-            >
+            <label htmlFor="email" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
               Email
             </label>
             <div className="relative">
@@ -55,17 +56,21 @@ export default function LoginForm() {
                 id="email"
                 type="email"
                 name="email"
-                placeholder="Enter your email address"
-                required
-              />
+                aria-labelledby="email-error"
+                placeholder="Enter your email address"/>
               <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+            </div>
+            <div id="email-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.email &&
+                state.errors.email.map((error: string) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
             </div>
           </div>
           <div className="mt-4">
-            <label
-              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
-              htmlFor="password"
-            >
+            <label htmlFor="password" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
               Password
             </label>
             <div className="relative">
@@ -74,20 +79,29 @@ export default function LoginForm() {
                 id="password"
                 type="password"
                 name="password"
+                aria-labelledby="password-error"
                 placeholder="Enter password"
-                required
-                minLength={8}
-              />
+                minLength={8}/>
               <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+            </div>
+            <div id="password-error" aria-live="polite" aria-atomic="true">
+              {state.errors?.password &&
+                state.errors.password.map((error: string) => (
+                  <p className="mt-2 text-sm text-red-500" key={error}>
+                    {error}
+                  </p>
+                ))}
             </div>
           </div>
         </div>
         <LoginButton />
-        <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
+        <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
+            {state.message && (
+                <div className="flex items-center justify-center flex-1">
+                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                    <p className="ml-2 text-xs text-red-500">{state.message}</p>
+                </div>
+            )}
         </div>
       </div>
     </form>
