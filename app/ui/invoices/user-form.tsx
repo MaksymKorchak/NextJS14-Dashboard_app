@@ -69,10 +69,10 @@ export default function UserForm({ user }: { user: User }) {
             <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
           </div>
         </div>
-        <Button className="mt-10 bg-red-500">
+        {/* <Button className="mt-10 bg-red-500">
           Delete my Account
           <ArchiveBoxXMarkIcon className="ml-2 w-5 md:w-6" />
-        </Button>
+        </Button> */}
       </form>
     </>
   );
