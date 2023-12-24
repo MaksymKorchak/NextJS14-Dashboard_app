@@ -28,8 +28,8 @@ const links = [
     icon: UserGroupIcon,
   },
   {
-    name: 'User Settings',
-    href: '/dashboard/settings',
+    name: 'User',
+    href: '/dashboard/user',
     icon: Cog6ToothIcon,
   },
 ];

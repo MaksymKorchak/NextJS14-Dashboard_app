@@ -27,7 +27,6 @@ export type LoginState = {
   message: string | null;
 };
 
-
 const FormSchema = z.object({
   id: z.string(),
   customerId: z.string({
@@ -187,6 +186,17 @@ export async function deleteInvoice(id: string) {
     return {
       message: 'Database Error: Failed to Delete Invoice.',
     };
+  }
+}
+
+// deleteUser
+export async function deleteUser(email: string) {
+  try {
+    await sql`DELETE FROM users WHERE email = ${email}`;
+    return { message: 'Deleted User.' };
+  } catch (error) {
+    console.error('Failed to delete user:', error);
+    return false;
   }
 }
 
