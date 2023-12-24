@@ -8,11 +8,8 @@ export default async function LatestInvoices() {
 
   return (
     <div className="flex w-full flex-col md:col-span-4">
-      <h2 className="font-lustina mb-4 text-xl md:text-2xl">
-        Latest Invoices
-      </h2>
+      <h2 className="font-lustina mb-4 text-xl md:text-2xl">Latest Invoices</h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-
         <div className="bg-white px-6">
           {latestInvoices.map((invoice, i) => {
             return (
@@ -42,9 +39,7 @@ export default async function LatestInvoices() {
                     </p>
                   </div>
                 </div>
-                <p
-                  className="font-lustina truncate text-sm font-medium md:text-base"
-                >
+                <p className="font-lustina truncate text-sm font-medium md:text-base">
                   {invoice.amount}
                 </p>
               </div>

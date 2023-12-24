@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   AtSymbolIcon,
@@ -11,18 +11,20 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { authenticate } from '@/app/lib/actions';
 
 export default function LoginForm() {
-
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
     <form action={dispatch} className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
-        <h1 className="font-lusitana mb-3 text-2xl">
+        <h1 className="mb-3 font-lusitana text-2xl">
           Please log in to continue.
         </h1>
         <div className="w-full">
           <div>
-            <label htmlFor="email" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
+            <label
+              htmlFor="email"
+              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+            >
               Email
             </label>
             <div className="relative">
@@ -39,7 +41,10 @@ export default function LoginForm() {
             </div>
           </div>
           <div className="mt-4">
-            <label htmlFor="password" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
+            <label
+              htmlFor="password"
+              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+            >
               Password
             </label>
             <div className="relative">
@@ -57,12 +62,16 @@ export default function LoginForm() {
           </div>
         </div>
         <LoginButton />
-        <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true" >
+        <div
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
           {errorMessage && (
-              <div className="flex items-center justify-center flex-1">
-                <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-                <p className="ml-2 text-xs text-red-500">{errorMessage}</p>
-              </div>
+            <div className="flex flex-1 items-center justify-center">
+              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+              <p className="ml-2 text-xs text-red-500">{errorMessage}</p>
+            </div>
           )}
         </div>
       </div>

@@ -8,23 +8,25 @@ export const metadata: Metadata = {
   title: 'Customers',
 };
 
-export default function Customers ({ searchParams } : {
-    searchParams?: {
-        query?: string;
-    }
+export default function Customers({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+  };
 }) {
-    const query = searchParams?.query || '';
-    return (
-        <main>
-            <div className="w-full">
-                <h1 className="text-2xl font-lusitana font-bold">Customers</h1>
-                <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-                    <Search placeholder="Search invoices..." />
-                </div>
-                <Suspense fallback={<CustomersTableSkeleton/>}>
-                    <Table query={query}/>
-                </Suspense>
-            </div>
-        </main>
-    )
-};
+  const query = searchParams?.query || '';
+  return (
+    <main>
+      <div className="w-full">
+        <h1 className="font-lusitana text-2xl font-bold">Customers</h1>
+        <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+          <Search placeholder="Search invoices..." />
+        </div>
+        <Suspense fallback={<CustomersTableSkeleton />}>
+          <Table query={query} />
+        </Suspense>
+      </div>
+    </main>
+  );
+}

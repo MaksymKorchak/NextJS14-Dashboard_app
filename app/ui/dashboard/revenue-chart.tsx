@@ -2,8 +2,7 @@ import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import { fetchRevenue } from '@/app/lib/data';
 
-export default async function RevenueChart () {
-
+export default async function RevenueChart() {
   const revenue = await fetchRevenue();
   const chartHeight = 350;
 
@@ -15,12 +14,10 @@ export default async function RevenueChart () {
 
   return (
     <div className="w-full md:col-span-4">
-      <h2 className="font-lustina mb-4 text-xl md:text-2x">
-        Recent Revenue
-      </h2>
+      <h2 className="font-lustina md:text-2x mb-4 text-xl">Recent Revenue</h2>
 
       <div className="rounded-xl bg-gray-50 p-4">
-        <div className="sm:grid-cols-13 mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 md:gap-4">
+        <div className="mt-0 grid grid-cols-12 items-end gap-2 rounded-md bg-white p-4 sm:grid-cols-13 md:gap-4">
           <div
             className="mb-6 hidden flex-col justify-between text-sm text-gray-400 sm:flex"
             style={{ height: `${chartHeight}px` }}

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { lusitana } from '@/app/ui/fonts';
 import {
@@ -12,7 +12,6 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { createUser } from '@/app/lib/actions';
 
 export default function LoginForm() {
-
   const initialState = { message: null, errors: {} };
   const [state, dispatch] = useFormState(createUser, initialState);
 
@@ -24,7 +23,10 @@ export default function LoginForm() {
         </h1>
         <div className="w-full">
           <div>
-            <label htmlFor="name" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
+            <label
+              htmlFor="name"
+              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+            >
               Name
             </label>
             <div className="relative">
@@ -34,7 +36,8 @@ export default function LoginForm() {
                 type="text"
                 name="name"
                 aria-labelledby="name-error"
-                placeholder="Enter your name"/>
+                placeholder="Enter your name"
+              />
               <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
             <div id="name-error" aria-live="polite" aria-atomic="true">
@@ -47,7 +50,10 @@ export default function LoginForm() {
             </div>
           </div>
           <div>
-            <label htmlFor="email" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
+            <label
+              htmlFor="email"
+              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+            >
               Email
             </label>
             <div className="relative">
@@ -57,7 +63,8 @@ export default function LoginForm() {
                 type="email"
                 name="email"
                 aria-labelledby="email-error"
-                placeholder="Enter your email address"/>
+                placeholder="Enter your email address"
+              />
               <AtSymbolIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
             <div id="email-error" aria-live="polite" aria-atomic="true">
@@ -70,7 +77,10 @@ export default function LoginForm() {
             </div>
           </div>
           <div className="mt-4">
-            <label htmlFor="password" className="mb-3 mt-5 block text-xs font-medium text-gray-900">
+            <label
+              htmlFor="password"
+              className="mb-3 mt-5 block text-xs font-medium text-gray-900"
+            >
               Password
             </label>
             <div className="relative">
@@ -81,7 +91,8 @@ export default function LoginForm() {
                 name="password"
                 aria-labelledby="password-error"
                 placeholder="Enter password"
-                minLength={8}/>
+                minLength={8}
+              />
               <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
             <div id="password-error" aria-live="polite" aria-atomic="true">
@@ -95,13 +106,17 @@ export default function LoginForm() {
           </div>
         </div>
         <LoginButton />
-        <div className="flex h-8 items-end space-x-1" aria-live="polite" aria-atomic="true">
-            {state.message && (
-                <div className="flex items-center justify-center flex-1">
-                    <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-                    <p className="ml-2 text-xs text-red-500">{state.message}</p>
-                </div>
-            )}
+        <div
+          className="flex h-8 items-end space-x-1"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {state.message && (
+            <div className="flex flex-1 items-center justify-center">
+              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+              <p className="ml-2 text-xs text-red-500">{state.message}</p>
+            </div>
+          )}
         </div>
       </div>
     </form>

@@ -18,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${lusitana.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} ${lusitana.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

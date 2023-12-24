@@ -8,9 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      fontFamily:{
-          inter: ['var(--font-inter)', 'sans-serif'],
-          lusitana: 'var(--font-lusitana)',
+      fontFamily: {
+        inter: ['var(--font-inter)', 'sans-serif'],
+        lusitana: 'var(--font-lusitana)',
       },
       gridTemplateColumns: {
         '13': 'repeat(13, minmax(0, 1fr))',
