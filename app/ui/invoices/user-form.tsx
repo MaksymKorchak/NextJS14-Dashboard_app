@@ -7,6 +7,7 @@ import { Button } from '@/app/ui/button';
 import type { User } from '@/app/lib/definitions';
 import { deleteUser } from '@/app/lib/actions';
 import { signOut } from '@/auth';
+import { revalidatePath } from 'next/cache';
 
 export default function UserForm({ user }: { user: User }) {
 
@@ -14,10 +15,11 @@ export default function UserForm({ user }: { user: User }) {
     "use server";
     try {
       await deleteUser(user?.email);
-      await signOut();
     } catch (error) {
       console.log('Error deleting user: ' + error);
     }
+    await signOut();
+    revalidatePath('/');
   };
 
   return (
