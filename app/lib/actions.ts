@@ -9,6 +9,25 @@ import { AuthError } from 'next-auth';
 import { checkIfEmailIsValid } from './data';
 import bcrypt from 'bcrypt';
 
+export type State = {
+  errors?: {
+    customerId?: string[];
+    amount?: string[];
+    status?: string[];
+  };
+  message: string | null;
+};
+
+export type LoginState = {
+  errors?: {
+    name?: string[];
+    password?: string[];
+    email?: string[];
+  };
+  message: string | null;
+};
+
+
 const FormSchema = z.object({
   id: z.string(),
   customerId: z.string({
@@ -37,17 +56,8 @@ const LoginFormSchema = z.object({
     }, 'This email is already registered'),
 });
 
-export type State = {
-  errors?: {
-    customerId?: string[];
-    amount?: string[];
-    status?: string[];
-  };
-  message?: string | null;
-};
-
 //createUser
-export async function createUser(prevState: State, formData: FormData) {
+export async function createUser(prevState: LoginState, formData: FormData) {
   // Validate form fields using Zod
   const validatedFields = await LoginFormSchema.safeParseAsync(
     Object.fromEntries(formData.entries()),
