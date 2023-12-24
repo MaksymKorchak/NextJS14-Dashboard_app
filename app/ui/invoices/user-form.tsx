@@ -16,7 +16,7 @@ export default function UserForm({ user }: { user: User }) {
       await deleteUser(user?.email);
       await signOut();
     } catch (error) {
-      alert('Error deleting user: ' + error);
+      console.log('Error deleting user: ' + error);
     }
   };
 
