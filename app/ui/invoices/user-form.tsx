@@ -11,6 +11,7 @@ import { signOut } from '@/auth';
 export default function UserForm({ user }: { user: User }) {
 
   const handleDeleteUser = async () => {
+    "use server";
     try {
       await deleteUser(user?.email);
       await signOut();
