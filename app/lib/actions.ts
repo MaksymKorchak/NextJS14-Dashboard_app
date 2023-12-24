@@ -196,7 +196,7 @@ export async function deleteUser(email: string) {
     return { message: 'Deleted User.' };
   } catch (error) {
     console.error('Failed to delete user:', error);
-    return false;
+    throw error;
   }
 }
 

@@ -9,10 +9,14 @@ import { deleteUser } from '@/app/lib/actions';
 import { signOut } from '@/auth';
 
 export default function UserForm({ user }: { user: User }) {
+
   const handleDeleteUser = async () => {
-    'use server';
-    await deleteUser(user?.email);
-    await signOut();
+    try {
+      await deleteUser(user?.email);
+      await signOut();
+    } catch (error) {
+      alert('Error deleting user: ' + error);
+    }
   };
 
   return (
